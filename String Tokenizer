@@ -1,0 +1,33 @@
+package LABEXPERIMENTS;
+import java.util.Scanner;
+import java.util.StringTokenizer;
+
+
+public class StringToken {
+	
+	public static void main(String[] args) {
+		
+		
+		
+		Scanner sc = new Scanner (System.in);
+		System.out.println("Enter the Integer with one Space gap :");
+		String s =sc.nextLine();
+		StringTokenizer st = new StringTokenizer(s, " ");
+		int sum =0;
+		while(st.hasMoreTokens())
+		{
+		
+			String temp = st.nextToken();
+			int value = Integer.parseInt(temp);
+			sum  = sum + value;
+			
+			
+			
+			 System.out.println(" " + value);
+			}
+		System.out.println("Sum of the Integer is:" +sum);
+
+	
+		sc.close();
+	}
+}
