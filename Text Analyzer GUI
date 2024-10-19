@@ -1,0 +1,45 @@
+package MODULE5;
+import java.awt.event.*;
+import javax.swing.*;
+
+
+public class WordsCountDemo implements ActionListener {
+	JLabel l1,l2;
+	JTextArea area;
+	JButton b;
+	
+	WordsCountDemo(){
+		
+		JFrame F = new JFrame();
+		l1 = new JLabel();
+		l1.setBounds(50,25,100,30);
+		l2 = new JLabel();
+		l2.setBounds(100,25,100,30);
+		area =new JTextArea();
+		area.setBounds(20,75,250,200);
+		b=new JButton("Count Words");
+		b.setBounds(100,300,120,30);
+		F.add(l1);F.add(l2);F.add(area);F.add(b);
+		F.setSize(450,450);
+		F.setLayout(null);
+		F.setVisible(true);
+		b.addActionListener(this);
+		F.setResizable(false);
+		}
+	
+	public void actionPerformed(ActionEvent e) {
+		String text =area.getText();
+		String words[]=text.split("\\s");
+		l1.setText("words :"+words.length);
+		l2.setText("Character :"+text.length());
+		
+	}
+	
+	
+
+	public static void main(String[] args) {
+		
+			new WordsCountDemo();
+	}
+
+}
