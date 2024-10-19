@@ -1,0 +1,50 @@
+package PRACTICEJAVA;
+import java.util.Scanner;
+
+class NegativeException extends Exception {
+	 private static final long serialVersionUID = 1L;
+    public NegativeException(String message) {
+        super(message);
+   
+   
+    }
+}
+
+public class NegativeExceptionDemo {
+    public static void main(String args[]) {
+        Scanner sc = new Scanner(System.in);
+        double height = 0; double depth = 0; double width = 0;
+
+        try {
+            System.out.println("Enter the height of the box: ");
+            height = sc.nextDouble();
+            if (height < 0) {
+                throw new NegativeException("Height cannot be negative");
+            }
+
+            System.out.println("Enter the width of the box: ");
+            width = sc.nextDouble();
+            if (width < 0) {
+                throw new NegativeException("Width cannot be negative");
+            }
+
+            System.out.println("Enter the depth of the box: ");
+            depth = sc.nextDouble();
+            if (depth < 0) {
+                throw new NegativeException("Depth cannot be negative");
+            }
+
+            double volume = height * depth * width;
+            double surfaceArea = 2 * (height * width + height * depth + width * depth);
+
+            System.out.println("The Volume is : " + volume);
+            System.out.println("Surface Area is : " + surfaceArea);
+        } catch (NegativeException e) {
+            System.out.println("Error: " + e.getMessage());
+        } catch (Exception e) {
+            System.out.println("Error: Invalid input. Enter numbers only");
+        } finally {
+            sc.close();
+        }
+    }
+}
