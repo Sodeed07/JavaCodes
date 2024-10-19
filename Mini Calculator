@@ -1,0 +1,79 @@
+package MODULE5;
+import java.awt.event.*;
+import javax.swing.*;
+
+public class CalculatorDemo implements ActionListener {
+    JFrame jf;
+    JLabel l1, l2, l3;
+    JButton j1, j2, j3, j4;
+    JTextField t1, t2, t3;
+
+    CalculatorDemo() {
+        jf = new JFrame();
+        JPanel jp = new JPanel();
+        l1 = new JLabel("Num 1");
+        l2 = new JLabel("Num 2");
+        l3 = new JLabel("Result");
+        j1 = new JButton("Add");
+        j2 = new JButton("Sub");
+        j3 = new JButton("Mul");
+        j4 = new JButton("Div");
+        t1 = new JTextField(20);
+        t2 = new JTextField(20);
+        t3 = new JTextField(20);
+        t3.setEditable(false); 
+        j1.addActionListener(this);
+        j2.addActionListener(this);
+        j3.addActionListener(this);
+        j4.addActionListener(this);
+        jp.add(l1);
+        jp.add(t1);
+        jp.add(l2);
+        jp.add(t2);
+        jp.add(l3);
+        jp.add(t3);
+        jp.add(j1);
+        jp.add(j2);
+        jp.add(j3);
+        jp.add(j4);
+       jf.add(jp);
+       jf.setSize(500, 300);
+        jf.setLayout(null);
+        jp.setBounds(30, 40, 280, 160);
+        jf.setVisible(true);
+        jf.setResizable(false);
+    }
+    public void actionPerformed(ActionEvent e) {
+        int result = 0;
+        String s1 = t1.getText();
+        String s2 = t2.getText(); 
+
+        try {
+            int a = Integer.parseInt(s1);
+            int b = Integer.parseInt(s2); 
+
+            if (e.getSource() == j1) { 
+                result = a + b;
+            } else if (e.getSource() == j2) { 
+                result = a - b;
+            } else if (e.getSource() == j3) { 
+                result = a * b;
+            } else if (e.getSource() == j4) { 
+                if (b == 0) {
+                    t3.setText("Error: Div by 0");
+                    return;
+                }
+                result = a / b;
+            }
+
+            t3.setText(String.valueOf(result)); 
+        } catch (NumberFormatException ex) { 
+            t3.setText("Invalid input");
+        } catch (Exception ex) { 
+            t3.setText("An error occurred");
+        }
+    }
+    	public static void main(String[] args) {
+        new CalculatorDemo();
+    }
+}
